@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:padding="16dp"
+    android:background="@android:color/white">
+
+    <!-- Login and Request Access buttons -->
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center">
+
+        <Button
+            android:id="@+id/btn_login"
+            android:layout_width="160dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            app:cornerRadius="2dp"
+            android:backgroundTint="@color/Pink"
+            android:text="Login"
+            android:textColor="@android:color/white" />
+
+        <Button
+            android:id="@+id/btn_request_access"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@android:color/holo_red_dark"
+            app:cornerRadius="2dp"
+            android:text="Request Access"
+            android:textColor="@android:color/white" />
+    </LinearLayout>
+
+    <!-- Access ID EditText -->
+    <TextView
+        android:id="@+id/textview1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="Access ID"
+        android:textColor="@android:color/black"
+        android:layout_gravity="left"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/edittextID"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:background="@color/gray"
+        android:padding="12dp"
+        android:textColor="@android:color/black"
+
+         />
+
+    <!-- Access Code EditText with Visibility Toggle -->
+    <TextView
+        android:id="@+id/textview2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Access Code"
+        android:layout_gravity="left"
+        android:textColor="@android:color/black"
+        android:textStyle="bold"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/edittextCode"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:background="@color/gray"
+            android:padding="12dp"
+            android:inputType="textPassword"
+            android:textColor="@android:color/black"
+             />
+
+        <ImageButton
+            android:id="@+id/btnTogglePasswordVisibility"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:background="@color/gray"
+            android:src="@drawable/ic_eye_code"
+            android:contentDescription="Toggle Password Visibility" />
+    </LinearLayout>
+
+    <!-- Access Button -->
+    <Button
+        android:id="@+id/btn_access"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:backgroundTint="@color/blue"
+        android:text="Access"
+        app:cornerRadius="0dp"
+        android:textColor="@android:color/white"
+        android:onClick="VerifictionActivity"/>
+
+    <!-- Forgot Access Token Link -->
+    <TextView
+        android:id="@+id/tvForgotAccessToken"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="forgot access token?"
+        android:textColor="@color/DBlue"
+        android:textStyle="italic"
+        android:gravity="center"
+        android:textAlignment="center"
+        />
+</LinearLayout>

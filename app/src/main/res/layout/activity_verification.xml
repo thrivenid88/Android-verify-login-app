@@ -1,0 +1,327 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF"
+    android:orientation="vertical"
+    android:paddingTop="16dp">
+
+    <!-- Title -->
+
+    <!-- Certificate ID input -->
+    <TextView
+        android:id="@+id/titleText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:text="Verification"
+        android:textColor="@color/black1"
+        android:textSize="24sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/textview_cert_id"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingLeft="12dp"
+        android:gravity="center"
+        android:text="Certificate Id"
+        android:textColor="@color/black1"
+        android:textSize="14sp"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/certificateID"
+        android:layout_width="334dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="8dp"
+        android:background="@color/gray"
+        android:padding="12dp"
+        android:textColor="@android:color/black" />
+
+    <!-- Buttons for Clear and Verify -->
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="20dp"
+        android:layout_marginTop="16dp"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/clearButton"
+            android:layout_width="160dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            app:cornerRadius="2dp"
+            android:backgroundTint="@color/DRed"
+            android:text="Clear"
+            android:textColor="@android:color/white"
+            android:layout_gravity="left" />
+
+        <Button
+            android:id="@+id/verifyButton"
+            android:layout_width="156dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:backgroundTint="#90EE90"
+            android:text="Verify"
+            android:textColor="@android:color/white"
+            app:cornerRadius="2dp" />
+    </LinearLayout>
+
+    <!-- Data Found Section -->
+    <LinearLayout
+        android:id="@+id/layout_data_found"
+        android:layout_width="368dp"
+        android:layout_height="200dp"
+        android:layout_marginTop="16dp"
+        android:orientation="vertical"
+        android:layout_gravity="center"
+        android:visibility="gone"
+        >
+
+        <TextView
+            android:id="@+id/dataFoundLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Data Found"
+            android:paddingLeft="20dp"
+            android:textColor="@color/black1"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <!-- Image Placeholder -->
+        <TextView
+            android:id="@+id/imageLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="IMAGE"
+            android:textColor="@color/black1"
+            android:paddingLeft="20dp"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <!-- Placeholder for image -->
+        <ImageView
+            android:id="@+id/imagePlaceholder"
+            android:layout_width="194dp"
+            android:layout_height="115dp"
+            android:layout_gravity="center"
+            android:background="#E0E0E0"
+            android:paddingLeft="30dp" />
+    </LinearLayout>
+
+    <!-- Data Fields -->
+    <LinearLayout
+        android:id="@+id/dataFields"
+        android:layout_width="match_parent"
+        android:layout_height="240dp"
+        android:orientation="vertical"
+        android:layout_marginTop="16dp"
+        android:layout_gravity="left"
+        android:layout_marginLeft="20dp"
+        android:visibility="gone"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            >
+
+<!--            <TextView-->
+<!--                android:id="@+id/fillId"-->
+<!--                android:layout_width="63dp"-->
+<!--                android:layout_height="30dp"-->
+<!--                android:text="Id:"-->
+<!--                android:textSize="30px"-->
+<!--                android:textColor="@color/black1"-->
+<!--                android:textStyle="bold"-->
+<!--                android:gravity="center"-->
+<!--                 />-->
+            <TextView
+                android:id="@+id/labelId"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:textColor="@color/black"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="36dp"
+            android:orientation="horizontal"
+            >
+<!--            <TextView-->
+<!--                android:id="@+id/fillName"-->
+<!--                android:layout_width="63dp"-->
+<!--                android:layout_height="30dp"-->
+<!--                android:gravity="center"-->
+<!--                android:textColor="@color/black"-->
+<!--                android:text="Name:"-->
+<!--                android:textSize="30px"-->
+<!--                android:textStyle="bold"/>-->
+
+            <TextView
+                android:id="@+id/labelName"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:textColor="@color/black"
+                />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="36dp"
+            android:orientation="horizontal"
+            >
+<!--            <TextView-->
+<!--                android:id="@+id/fillTitle"-->
+<!--                android:layout_width="63dp"-->
+<!--                android:layout_height="30dp"-->
+<!--                android:text="Title:"-->
+<!--                android:textSize="30px"-->
+<!--                android:textStyle="bold"-->
+<!--                android:textColor="@color/black1"-->
+<!--                android:gravity="center"-->
+<!--                /> -->
+
+            <TextView
+                android:id="@+id/labelTitle"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:textColor="@color/black" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="36dp"
+            android:orientation="horizontal">
+<!--            <TextView-->
+<!--                android:id="@+id/fill_issued_On"-->
+<!--                android:layout_width="63dp"-->
+<!--                android:layout_height="30dp"-->
+<!--                android:text="Issued On:"-->
+<!--                android:textSize="30px"-->
+<!--                android:textStyle="bold"-->
+<!--                android:textColor="@color/black1"-->
+<!--                android:gravity="center"-->
+<!--                />-->
+
+            <TextView
+                android:id="@+id/labelIssued_on"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:textColor="@color/black"
+                />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="36dp"
+            android:orientation="horizontal">
+
+<!--            <TextView-->
+<!--                android:id="@+id/fill_expiry_date"-->
+<!--                android:layout_width="63dp"-->
+<!--                android:layout_height="30dp"-->
+<!--                android:text="Expiry Date:"-->
+<!--                android:textSize="30px"-->
+<!--                android:textColor="@color/black1"-->
+<!--                android:textStyle="bold"-->
+<!--                android:gravity="center"-->
+<!--                 />-->
+            <TextView
+                android:id="@+id/label_expiry_date"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:textColor="@color/black"
+                />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="36dp"
+            android:orientation="horizontal">
+<!--            <TextView-->
+<!--                android:id="@+id/fillStatus"-->
+<!--                android:layout_width="63dp"-->
+<!--                android:layout_height="30dp"-->
+<!--                android:text="Status:"-->
+<!--                android:textSize="30px"-->
+<!--                android:textColor="@color/black1"-->
+<!--                android:textStyle="bold"-->
+<!--                android:gravity="center"-->
+<!--                 />-->
+
+            <TextView
+                android:id="@+id/labelStatus"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:textColor="@color/black"
+                 />
+
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="36dp"
+            android:orientation="horizontal">
+<!--            <TextView-->
+<!--                android:id="@+id/filldescription"-->
+
+<!--                android:layout_width="63dp"-->
+<!--                android:layout_height="30dp"-->
+<!--                android:text="Description:"-->
+<!--                android:textSize="30px"-->
+<!--                android:textColor="@color/black1"-->
+<!--                android:textStyle="bold"-->
+<!--                android:gravity="center" />-->
+
+            <TextView
+                android:id="@+id/label_Description"
+                android:layout_width="match_parent"
+                android:layout_height="36dp"
+                android:textColor="@color/black" />
+
+
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <!-- Logout link at the bottom -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:layout_gravity="bottom"
+        android:gravity="center">
+
+        <TextView
+            android:id="@+id/logoutLink"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_marginTop="24dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:gravity="bottom"
+            android:textSize="30px"
+            android:text="Logout?"
+            android:textStyle="italic"
+            android:textColor="@android:color/holo_blue_dark" />
+    </LinearLayout>
+
+</LinearLayout>
