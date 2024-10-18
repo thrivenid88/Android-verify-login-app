@@ -51,6 +51,7 @@ public class VerificationActivity extends AppCompatActivity {
         // Initialize Database Helper
         dbHelper = new DatabaseHelper(this);
 
+
         // Clear button functionality
         clearButton.setOnClickListener(new View.OnClickListener() {
             @Override
