@@ -18,7 +18,7 @@ public class VerificationActivity extends AppCompatActivity {
     private EditText certificateIdInput;
     private Button clearButton;
     private Button verifyButton;
-    private TextView dataFoundLabel, imageLabel, idLabel, nameLabel, titleLabel, issuedOnLabel, expiryDateLabel, statusLabel, descriptionLabel;
+    private TextView dataFoundLabel, imageLabel, idLabel, nameLabel, titleLabel, issuedOnLabel, expiryDateLabel, statusLabel, descriptionLabel,img_urlLabel;
     private ImageView imagePlaceholder;
     private LinearLayout dataFields, layoutDataFound;
     private TextView Logout;
@@ -45,31 +45,32 @@ public class VerificationActivity extends AppCompatActivity {
         expiryDateLabel = findViewById(R.id.label_expiry_date);
         statusLabel = findViewById(R.id.labelStatus);
         descriptionLabel = findViewById(R.id.label_Description);
+        img_urlLabel=findViewById(R.id.label_url);
         Logout = findViewById(R.id.logoutLink);
 
         // Initialize Database Helper
         dbHelper = new DatabaseHelper(this);
 
 
-//         Insert initial data (optional)
-        boolean isInserted = dbHelper.insertInfo(
-                "12345",                 // certificate_id
-                "John Doe",             // name
-                "Certificate Title",    // title
-                "2023-01-01",           // issue_date
-                "2024-01-01",           // expiry_date
-                "Valid",                // status
-                "This is a description", // description
-                "https://example.com/image.jpg" // img_url
-        );
-
-//         Show a message based on insertion result
-        if (isInserted) {
-            Toast.makeText(this, "Data inserted successfully", Toast.LENGTH_SHORT).show();
-        } else {
-            Toast.makeText(this, "Data insertion failed", Toast.LENGTH_SHORT).show();
-        }
-
+////         Insert initial data (optional)
+//        boolean isInserted = dbHelper.insertInfo(
+//                "12345",                 // certificate_id
+//                "John Doe",             // name
+//                "Certificate Title",    // title
+//                "2023-01-01",           // issue_date
+//                "2024-01-01",           // expiry_date
+//                "Valid",                // status
+//                "This is a description", // description
+//                "https://example.com/image.jpg" // img_url
+//        );
+//
+////         Show a message based on insertion result
+//        if (isInserted) {
+//            Toast.makeText(this, "Data inserted successfully", Toast.LENGTH_SHORT).show();
+//        } else {
+//            Toast.makeText(this, "Data insertion failed", Toast.LENGTH_SHORT).show();
+//        }
+//
 
 
         // Clear button functionality
@@ -98,13 +99,14 @@ public class VerificationActivity extends AppCompatActivity {
                             dataFields.setVisibility(View.VISIBLE);
 
                             // Set data fetched from the database
-                            idLabel.setText("ID: " + cursor.getString(cursor.getColumnIndexOrThrow("certificate_id")));
+                            idLabel.setText("ID: " + cursor.getString(cursor.getColumnIndexOrThrow("cert_id")));
                             nameLabel.setText("Name: " + cursor.getString(cursor.getColumnIndexOrThrow("name")));
                             titleLabel.setText("Title: " + cursor.getString(cursor.getColumnIndexOrThrow("title")));
                             issuedOnLabel.setText("Issued On: " + cursor.getString(cursor.getColumnIndexOrThrow("issue_date")));
                             expiryDateLabel.setText("Expiry Date: " + cursor.getString(cursor.getColumnIndexOrThrow("expiry_date")));
                             statusLabel.setText("Status: " + cursor.getString(cursor.getColumnIndexOrThrow("status")));
                             descriptionLabel.setText("Description: " + cursor.getString(cursor.getColumnIndexOrThrow("description")));
+                            img_urlLabel.setText("Description: " + cursor.getString(cursor.getColumnIndexOrThrow("img_url")));
 
                             cursor.close();  // Always close the cursor when done
                         } else {
