@@ -51,28 +51,6 @@ public class VerificationActivity extends AppCompatActivity {
         // Initialize Database Helper
         dbHelper = new DatabaseHelper(this);
 
-
-////         Insert initial data (optional)
-//        boolean isInserted = dbHelper.insertInfo(
-//                "12345",                 // certificate_id
-//                "John Doe",             // name
-//                "Certificate Title",    // title
-//                "2023-01-01",           // issue_date
-//                "2024-01-01",           // expiry_date
-//                "Valid",                // status
-//                "This is a description", // description
-//                "https://example.com/image.jpg" // img_url
-//        );
-//
-////         Show a message based on insertion result
-//        if (isInserted) {
-//            Toast.makeText(this, "Data inserted successfully", Toast.LENGTH_SHORT).show();
-//        } else {
-//            Toast.makeText(this, "Data insertion failed", Toast.LENGTH_SHORT).show();
-//        }
-//
-
-
         // Clear button functionality
         clearButton.setOnClickListener(new View.OnClickListener() {
             @Override
