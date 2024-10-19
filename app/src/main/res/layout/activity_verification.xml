@@ -84,9 +84,10 @@
         android:layout_width="368dp"
         android:layout_height="200dp"
         android:layout_gravity="center"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="1dp"
         android:orientation="vertical"
-        android:visibility="gone">
+        android:visibility="gone"
+        >
 
         <TextView
             android:id="@+id/dataFoundLabel"
@@ -99,25 +100,26 @@
             android:textSize="16sp"
             android:textStyle="bold" />
 
-        <!-- Image Placeholder -->
-        <TextView
-            android:id="@+id/imageLabel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:paddingLeft="20dp"
-            android:text="IMAGE"
-            android:textColor="@color/black1"
-            android:textSize="16sp"
-            android:textStyle="bold" />
+<!--        &lt;!&ndash; Image Placeholder &ndash;&gt;-->
+<!--        <TextView-->
+<!--            android:id="@+id/imageLabel"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginTop="8dp"-->
+<!--            android:paddingLeft="20dp"-->
+<!--            android:text="IMAGE"-->
+<!--            android:textColor="@color/black1"-->
+<!--            android:textSize="16sp"-->
+<!--            android:textStyle="bold" />-->
 
         <!-- Placeholder for image -->
         <ImageView
             android:id="@+id/imagePlaceholder"
             android:layout_width="194dp"
-            android:layout_height="115dp"
-            android:layout_gravity="center"
-            android:background="#E0E0E0"
+            android:layout_height="126dp"
+            android:layout_marginTop="10dp"
+            android:layout_gravity="left"
+            android:background="@color/white"
             android:paddingLeft="30dp" />
     </LinearLayout>
 
@@ -127,7 +129,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="1dp"
         android:layout_gravity="left"
         android:layout_marginLeft="20dp"
         android:visibility="gone">

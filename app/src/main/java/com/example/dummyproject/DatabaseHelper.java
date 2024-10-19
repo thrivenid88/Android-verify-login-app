@@ -45,7 +45,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         String insertDataCert = "INSERT INTO data_cert (cert_id, name, title, issue_date, expiry_date, status, description, img_url, updated_on) " +
                 "VALUES " +
                 "('DUMMY01', 'Anonymous', 'Test_User', '2024-10-16', '0000-00-00', 'active', 'The above document is issued from aaa centre and is valid throughout the above mentioned date', 'https://4.imimg.com/data4/JE/XJ/MY-6362665/certificate.jpg', '2024-10-16 00:00:00')," +
-                "('DUMMY02', 'user-2', 'unknown', '2024-09-01', '2024-10-31', 'reviewing', 'The above certificate is under review and please wait for review process to complete', 'https://piktochart.com/.../large-271-600x424.jpg', '2024-10-01 00:00:00');";
+                "('DUMMY02', 'user-2', 'unknown', '2024-09-01', '2024-10-31', 'reviewing', 'The above certificate is under review and please wait for review process to complete', 'https://www.nurclm.com/Upload/Downld/20213408013455.jpg', '2024-10-01 00:00:00');";
         db.execSQL(insertDataCert);
 
         // Create 'login' table
