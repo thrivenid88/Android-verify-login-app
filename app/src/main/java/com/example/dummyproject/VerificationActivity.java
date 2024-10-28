@@ -12,9 +12,15 @@ import android.widget.TextView;
 import android.widget.Toast; // Import Toast
 import androidx.appcompat.app.AppCompatActivity;
 import android.database.Cursor;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
+
+import java.security.cert.Certificate;
 
 public class VerificationActivity extends AppCompatActivity {
 
@@ -52,7 +58,7 @@ public class VerificationActivity extends AppCompatActivity {
         Logout = findViewById(R.id.logoutLink);
 
         // Initialize Database Helper
-        dbHelper = new DatabaseHelper(this);
+//        dbHelper = new DatabaseHelper(this);
 
 
         // Clear button functionality
@@ -69,49 +75,62 @@ public class VerificationActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 String certificateId = certificateIdInput.getText().toString();
-                Log.d("Verification", "Certificate ID entered: " + certificateId);
-
                 if (!certificateId.isEmpty()) {
-                    Cursor cursor = dbHelper.getCertificateById(certificateId);
-                    if (cursor != null) {
-                        Log.d("Verification", "Cursor count: " + cursor.getCount());
-                        if (cursor.moveToFirst()) {
-                            // Show data layout when verification is successful
-                            layoutDataFound.setVisibility(View.VISIBLE);
-                            dataFields.setVisibility(View.VISIBLE);
+                    // Create API Service
+                    ApiService apiService = RetrofitClient.getClient("https://internship.irinfotech.com/verification/api/").create(ApiService.class);
+                    // Make API call
+                    // Make API call
+                    Call<CertificateResponse> call = apiService.getCertificateById(certificateId);
 
-                            // Set data fetched from the database
-                            idLabel.setText("ID: " + cursor.getString(cursor.getColumnIndexOrThrow("cert_id")));
-                            nameLabel.setText("Name: " + cursor.getString(cursor.getColumnIndexOrThrow("name")));
-                            titleLabel.setText("Title: " + cursor.getString(cursor.getColumnIndexOrThrow("title")));
-                            issuedOnLabel.setText("Issued On: " + cursor.getString(cursor.getColumnIndexOrThrow("issue_date")));
-                            expiryDateLabel.setText("Expiry Date: " + cursor.getString(cursor.getColumnIndexOrThrow("expiry_date")));
-                            statusLabel.setText("Status: " + cursor.getString(cursor.getColumnIndexOrThrow("status")));
-                            descriptionLabel.setText("Description: " + cursor.getString(cursor.getColumnIndexOrThrow("description")));
-                            // Get the image URL based on the certificate ID
-                            String imageUrl = cursor.getString(cursor.getColumnIndexOrThrow("img_url"));
-                            Log.d("Verification", "Image URL for ID " + certificateId + ": " + imageUrl);  // Log the image URL
-                            Glide.with(VerificationActivity.this)
-                                    .load(imageUrl)
-                                    .diskCacheStrategy(DiskCacheStrategy.NONE) // Disable caching
-                                    .skipMemoryCache(true) // Skip memory cache
-                                    .placeholder(R.drawable.img_2) // Placeholder while loading
-                                    .into(imagePlaceholder); // ImageView where the image will be displayed
-                            cursor.close();  // Always close the cursor when done
-                        } else {
-                            Log.d("Verification", "No data found for certificate ID");
-                            hideData();  // Hide if no data found
+                    call.enqueue(new Callback<CertificateResponse>() {  // Use CertificateResponse here
+                        @Override
+                        public void onResponse(Call<CertificateResponse> call, Response<CertificateResponse> response) {
+                            Log.d("API Response", "Response Code: " + response.code());
+                            if (response.isSuccessful() && response.body() != null) {
+                                CertificateResponse certificateResponse = response.body();
+                                Log.d("API Response", "Response Body: " + certificateResponse.toString());
+
+                                MyCertificate certificate = certificateResponse.getData(); // Fetch MyCertificate from CertificateResponse
+
+                                if (certificate != null) { // Check if certificate is not null
+                                    // Set data to UI
+                                    layoutDataFound.setVisibility(View.VISIBLE);
+                                    dataFields.setVisibility(View.VISIBLE);
+
+                                    idLabel.setText("ID: " + certificate.getCert_id());
+                                    nameLabel.setText("Name: " + certificate.getName());
+                                    titleLabel.setText("Title: " + certificate.getTitle());
+                                    issuedOnLabel.setText("Issued On: " + certificate.getIssue_date());
+                                    expiryDateLabel.setText("Expiry Date: " + certificate.getExpiry_date());
+                                    statusLabel.setText("Status: " + certificate.getStatus());
+                                    descriptionLabel.setText("Description: " + certificate.getDescription());
+
+                                    // Load the image with Glide
+                                    Glide.with(VerificationActivity.this)
+                                            .load(certificate.getImg_url())
+                                            .diskCacheStrategy(DiskCacheStrategy.NONE)
+                                            .skipMemoryCache(true)
+                                            .placeholder(R.drawable.certificate)
+                                            .into(imagePlaceholder);
+                                } else {
+                                    hideData();
+                                    Toast.makeText(VerificationActivity.this, "No certificate found", Toast.LENGTH_SHORT).show();
+                                }
+                            } else {
+                                hideData();
+                                Toast.makeText(VerificationActivity.this, "No data found", Toast.LENGTH_SHORT).show();
+                            }
                         }
-                    } else {
-                        Log.d("Verification", "Cursor is null");
-                        hideData();  // Hide if cursor is null
-                    }
+                        @Override
+                        public void onFailure(Call<CertificateResponse> call, Throwable t) {
+                            hideData();
+                            Toast.makeText(VerificationActivity.this, "Failed to connect to API", Toast.LENGTH_SHORT).show();
+                        }
+                    });
                 } else {
-                    Log.d("Verification", "Certificate ID is empty");
                     hideData();  // If certificate ID is empty, hide all data
                 }
             }
-
         });
 
         // Logout functionality
